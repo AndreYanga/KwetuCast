@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KwetuTube - Afro Music Player</title>
+    <title>KwetuCast - Mídia Africana</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js" defer></script>
@@ -13,67 +13,193 @@
 <body>
     <header class="app-header">
         <div class="logo-container">
-            <h1 class="logo">KwetuTube</h1>
-            <span class="logo-subtitle">Afro Music Player</span>
+            <h1 class="logo">KwetuCast</h1>
+            <span class="logo-subtitle">Mídia Africana</span>
         </div>
+        <nav class="nav-menu">
+            <button class="nav-btn active" data-section="videos"><i class="fas fa-video"></i> Vídeos</button>
+            <button class="nav-btn" data-section="musicas"><i class="fas fa-music"></i> Músicas</button>
+            <button class="nav-btn" data-section="radio"><i class="fas fa-broadcast-tower"></i> Rádio</button>
+        </nav>
     </header>
     
     <main class="main-content">
-        <div class="video-container paused">
-            <div class="poster-overlay">
-                <img class="poster-image" src="assets/neru.jpg" alt="Poster">
-                <div class="play-overlay-btn">
-                    <i class="fas fa-play-circle fa-4x"></i>
+        <!-- Seção de Vídeos -->
+        <section id="videos" class="content-section active">
+            <div class="featured-video">
+                <div class="video-container paused">
+                    <div class="poster-overlay">
+                        <img class="poster-image" src="assets/neru.jpg" alt="Poster">
+                        <div class="play-overlay-btn">
+                            <i class="fas fa-play-circle fa-4x"></i>
+                        </div>
+                    </div>
+                    <video id="main-video" controls></video>
+                    <div class="video-info">
+                        <h1>Nerú Americano - Mama é Baixinha</h1>
+                        <div class="video-meta">
+                            <span class="views"><i class="fas fa-eye"></i> 2.3M</span>
+                            <span class="date"><i class="far fa-calendar-alt"></i> 1 ano atrás</span>
+                            <span class="likes"><i class="fas fa-heart"></i> 125K</span>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <button id="prev-media" title="Anterior"><i class="fas fa-step-backward"></i></button>
+                        <button id="play-pause-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
+                        <button id="next-media" title="Próximo"><i class="fas fa-step-forward"></i></button>
+                    </div>
                 </div>
             </div>
-            <video id="main-video" controls></video>
-            <div class="video-info">
-                <h1>Nerú Americano - Mama é Baixinha</h1>
-                <div class="video-meta">
-                    <span class="views"><i class="fas fa-eye"></i> 2.3M</span>
-                    <span class="date"><i class="far fa-calendar-alt"></i> 1 ano atrás</span>
-                    <span class="likes"><i class="fas fa-heart"></i> 125K</span>
-                </div>
-            </div>
-            <div class="controls">
-                <button id="prev-media" title="Anterior"><i class="fas fa-step-backward"></i></button>
-                <button id="play-pause-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
-                <button id="next-media" title="Próximo"><i class="fas fa-step-forward"></i></button>
-            </div>
-        </div>
 
-        <div class="playlist-container">
-            <h2 class="playlist-title">Playlist Afro</h2>
-            <div class="playlist">
-                <div class="playlist-item active">
-                    <div class="item-number">1</div>
-                    <img src="assets/posters/neru.jpg" alt="Capa da música" class="playlist-thumb">
-                    <div class="playlist-info">
-                        <h4 class="playlist-title">Nerú Americano - Spider-Man (feat. Careca Vaidoso)</h4>
-                        <span class="playlist-meta">2.3M views · 1 ano atrás</span>
+            <div class="playlist-container">
+                <h2 class="playlist-title">Vídeos em Destaque</h2>
+                <div class="playlist">
+                    <div class="playlist-item active">
+                        <div class="item-number">1</div>
+                        <img src="assets/posters/neru.jpg" alt="Capa do vídeo" class="playlist-thumb">
+                        <div class="playlist-info">
+                            <h4 class="playlist-title">Nerú Americano - Spider-Man (feat. Careca Vaidoso)</h4>
+                            <span class="playlist-meta">2.3M views · 1 ano atrás</span>
+                        </div>
+                        <div class="playlist-duration">3:45</div>
                     </div>
-                    <div class="playlist-duration">3:45</div>
-                </div>
-                <div class="playlist-item">
-                    <div class="item-number">2</div>
-                    <img src="assets/posters/c4pedro.jpg" alt="Capa da música" class="playlist-thumb">
-                    <div class="playlist-info">
-                        <h4 class="playlist-title">C4 Pedro - Céu</h4>
-                        <span class="playlist-meta">1.9M views · 8 meses atrás</span>
+                    <div class="playlist-item">
+                        <div class="item-number">2</div>
+                        <img src="assets/posters/c4pedro.jpg" alt="Capa do vídeo" class="playlist-thumb">
+                        <div class="playlist-info">
+                            <h4 class="playlist-title">C4 Pedro - Céu</h4>
+                            <span class="playlist-meta">1.9M views · 8 meses atrás</span>
+                        </div>
+                        <div class="playlist-duration">4:12</div>
                     </div>
-                    <div class="playlist-duration">4:12</div>
-                </div>
-                <div class="playlist-item">
-                    <div class="item-number">3</div>
-                    <img src="assets/posters/yola.jpg" alt="Capa da música" class="playlist-thumb">
-                    <div class="playlist-info">
-                        <h4 class="playlist-title">Yola Semedo - Volta Amor</h4>
-                        <span class="playlist-meta">3.1M views · 2 anos atrás</span>
+                    <div class="playlist-item">
+                        <div class="item-number">3</div>
+                        <img src="assets/posters/yola.jpg" alt="Capa do vídeo" class="playlist-thumb">
+                        <div class="playlist-info">
+                            <h4 class="playlist-title">Yola Semedo - Volta Amor</h4>
+                            <span class="playlist-meta">3.1M views · 2 anos atrás</span>
+                        </div>
+                        
+                        <div class="playlist-duration">3:58</div>
                     </div>
-                    <div class="playlist-duration">3:58</div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Seção de Músicas -->
+        <section id="musicas" class="content-section">
+            <div class="audio-player">
+                <div class="audio-poster">
+                    <img src="assets/posters/neru.jpg" alt="Capa do álbum" id="audio-cover">
+                    <div class="audio-controls">
+                        <button id="audio-prev"><i class="fas fa-step-backward"></i></button>
+                        <button id="audio-play"><i class="fas fa-play"></i></button>
+                        <button id="audio-next"><i class="fas fa-step-forward"></i></button>
+                    </div>
+                </div>
+                <div class="audio-info">
+                    <h2 id="audio-title">Nerú Americano - Spider-Man</h2>
+                    <p id="audio-artist">Feat. Careca Vaidoso</p>
+                    <div class="audio-progress">
+                        <input type="range" id="audio-progress-bar" min="0" max="100" value="0">
+                        <span id="audio-current-time">0:00</span>
+                        <span id="audio-duration">3:45</span>
+                    </div>
+                    <div class="audio-volume">
+                        <i class="fas fa-volume-up"></i>
+                        <input type="range" id="volume-control" min="0" max="100" value="70">
+                    </div>
+                </div>
+            </div>
+
+            <div class="audio-playlist">
+                <h3>Playlist de Músicas</h3>
+                <div class="audio-list">
+                    <div class="audio-item active">
+                        <img src="assets/posters/neru.jpg" alt="Capa">
+                        <div class="audio-details">
+                            <h4>Nerú Americano - Spider-Man</h4>
+                            <p>Feat. Careca Vaidoso</p>
+                        </div>
+                        <span class="audio-length">3:45</span>
+                    </div>
+                    <div class="audio-item">
+                        <img src="assets/posters/c4pedro.jpg" alt="Capa">
+                        <div class="audio-details">
+                            <h4>C4 Pedro - Céu</h4>
+                            <p>Álbum: The Gentleman</p>
+                        </div>
+                        <span class="audio-length">4:12</span>
+                    </div>
+                    <div class="audio-item">
+                        <img src="assets/posters/yola.jpg" alt="Capa">
+                        <div class="audio-details">
+                            <h4>Yola Semedo - Volta Amor</h4>
+                            <p>Álbum: Minha Essência</p>
+                        </div>
+                        <span class="audio-length">3:58</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Rádio -->
+        <section id="radio" class="content-section">
+            <div class="radio-header">
+                <h2>Rádios Africanas</h2>
+                <p>Ouça as melhores estações de rádio da África</p>
+            </div>
+            <div class="radio-stations">
+                <div class="station active" data-station="0">
+                    <div class="station-info">
+                        <h3>Radio Mais</h3>
+                        <p>99.1 FM · Angola</p>
+                    </div>
+                    <div class="station-status">
+                        <span class="live">LIVE</span>
+                        <div class="playing">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="station" data-station="1">
+                    <div class="station-info">
+                        <h3>Radio Escola</h3>
+                        <p>81.4 FM · Angola</p>
+                    </div>
+                    <div class="station-status">
+                        <span class="live">LIVE</span>
+                        <div class="playing">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="station" data-station="2">
+                    <div class="station-info">
+                        <h3>Radio Lac</h3>
+                        <p>89.9 FM · Angola</p>
+                    </div>
+                    <div class="station-status">
+                        <span class="live">LIVE</span>
+                        <div class="playing">
+                            <div class="rect1"></div>
+                            <div class="rect2"></div>
+                            <div class="rect3"></div>
+                            <div class="rect4"></div>
+                            <div class="rect5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 </html>

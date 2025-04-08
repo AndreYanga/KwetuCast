@@ -6,6 +6,7 @@
     --text-primary: #FFFFFF;
     --text-secondary: #B3B3B3;
     --highlight: rgba(255, 90, 95, 0.2);
+    --radio-gradient: linear-gradient(135deg, #00c3ff 0%, #4389a2 100%);
 }
 
 * {
@@ -27,6 +28,9 @@ body {
     padding: 15px 20px;
     background-color: var(--light-bg);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo-container {
@@ -48,21 +52,55 @@ body {
     font-weight: 400;
 }
 
-.main-content {
+.nav-menu {
     display: flex;
-    flex-direction: row;
-    padding: 20px;
     gap: 20px;
-    flex: 1;
 }
 
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn i {
+    font-size: 18px;
+}
+
+.nav-btn.active, .nav-btn:hover {
+    background-color: var(--highlight);
+    color: var(--primary-color);
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Estilos para a seção de vídeos */
 .video-container {
-    flex: 3;
     position: relative;
     border-radius: 12px;
     overflow: hidden;
     background-color: #000;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
 }
 
 video {
@@ -167,13 +205,10 @@ video {
 }
 
 .playlist-container {
-    flex: 1;
     background-color: var(--light-bg);
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    max-height: 80vh;
-    overflow-y: auto;
 }
 
 .playlist-container h2 {
@@ -253,27 +288,352 @@ video {
     margin-left: 10px;
 }
 
+/* Estilos para a seção de músicas */
+.audio-player {
+    display: flex;
+    background-color: var(--light-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.audio-poster {
+    width: 250px;
+    position: relative;
+}
+
+.audio-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.audio-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.audio-controls button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-controls button:hover {
+    background-color: var(--highlight);
+}
+
+.audio-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.audio-info h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.audio-info p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.audio-progress {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.audio-progress input {
+    flex: 1;
+    height: 5px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+}
+
+.audio-progress input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.audio-volume {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.audio-volume i {
+    color: var(--text-secondary);
+}
+
+.audio-volume input {
+    width: 100px;
+    height: 5px;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+}
+
+.audio-volume input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.audio-playlist {
+    background-color: var(--light-bg);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.audio-playlist h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.audio-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.audio-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.audio-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.audio-item.active {
+    background-color: var(--highlight);
+}
+
+.audio-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.audio-details {
+    flex: 1;
+}
+
+.audio-details h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.audio-details p {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.audio-length {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-left: 10px;
+}
+
+/* Estilos para a seção de rádio */
+.radio-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.radio-header h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.radio-header p {
+    color: var(--text-secondary);
+}
+
+.radio-stations {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.station {
+    background-color: var(--light-bg);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.station:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.station.active {
+    background: var(--radio-gradient);
+}
+
+.station-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.station-info p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.station.active .station-info p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.station-status {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.live {
+    background-color: #cc1919;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0;
+}
+
+.station.active .live {
+    opacity: 1;
+}
+
+.playing {
+    display: none;
+    height: 20px;
+    align-items: flex-end;
+    gap: 3px;
+}
+
+.station.active .playing {
+    display: flex;
+}
+
+.playing div {
+    background-color: white;
+    width: 3px;
+    border-radius: 3px;
+    animation: equalize 1s infinite ease-in-out;
+}
+
+.playing .rect1 { height: 30%; animation-delay: 0s; }
+.playing .rect2 { height: 50%; animation-delay: 0.2s; }
+.playing .rect3 { height: 70%; animation-delay: 0.4s; }
+.playing .rect4 { height: 50%; animation-delay: 0.6s; }
+.playing .rect5 { height: 30%; animation-delay: 0.8s; }
+
+@keyframes equalize {
+    0%, 100% { transform: scaleY(0.5); }
+    50% { transform: scaleY(1); }
+}
+
 /* Scrollbar styling */
-.playlist-container::-webkit-scrollbar {
+.playlist-container::-webkit-scrollbar,
+.audio-playlist::-webkit-scrollbar {
     width: 6px;
 }
 
-.playlist-container::-webkit-scrollbar-track {
+.playlist-container::-webkit-scrollbar-track,
+.audio-playlist::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
 }
 
-.playlist-container::-webkit-scrollbar-thumb {
+.playlist-container::-webkit-scrollbar-thumb,
+.audio-playlist::-webkit-scrollbar-thumb {
     background: var(--primary-color);
     border-radius: 10px;
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
-    .main-content {
+    .app-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .audio-player {
         flex-direction: column;
     }
-    
-    .playlist-container {
-        max-height: none;
+
+    .audio-poster {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-meta {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .controls {
+        gap: 15px;
+    }
+
+    .controls button {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    #play-pause-btn {
+        width: 50px;
+        height: 50px;
     }
 }
